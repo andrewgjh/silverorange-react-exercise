@@ -42,18 +42,21 @@ export function App() {
     fetchRepos();
   }, [fetchRepos]);
 
+  //function to filter repo list by language
   const filterBy = (language) => {
     const filteredByLanguage = repos.filter(
       (repo) => repo.language === language
     );
     setFiltered(filteredByLanguage);
   };
+
+  //function to find repo in the list based on clicked repo
   const repoDetailed = (id) => {
-    console.log(id);
     setShowDetailRepo(true);
     const clickedRepo = repos.find((repo) => repo.id === id);
     setDetailRepo(clickedRepo.name);
   };
+  //function to render the full list of repos
   const showAll = () => {
     setShowDetailRepo(false);
     setFiltered(repos);
