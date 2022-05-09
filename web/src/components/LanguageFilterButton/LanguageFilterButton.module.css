@@ -1,0 +1,11 @@
+.language_filter{
+  background-color: rgb(233, 89, 37);
+  border:none;
+  margin: .5em;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+.language_filter:hover{
+  background-color: rgb(231, 132, 97);
+}

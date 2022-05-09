@@ -61,7 +61,10 @@ export function App() {
 
   return (
     <div className="App">
-      <button onClick={showAll}>Show All Repos</button>
+      <h1 className="main-title"> silverorange repos</h1>
+      <button onClick={showAll} className="showall_languages">
+        Show All Repos
+      </button>
       {showDetailRepo && <RepoDetailLatest name={detailRepo} />}
       {!showDetailRepo && (
         <LanguageList languages={languages} filterBy={filterBy} />

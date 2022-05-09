@@ -1,4 +1,6 @@
 import { useEffect, useCallback, useState } from 'react';
+
+import styles from './RepoDetailsLatest.module.css';
 import ReactMarkdown from 'react-markdown';
 
 const RepoDetailLatest = ({ name }) => {
@@ -48,7 +50,7 @@ const RepoDetailLatest = ({ name }) => {
   }, [fetchCommits, fetchReadMe]);
   return (
     <section>
-      <main>
+      <main className={styles.latest}>
         <h1>{name}</h1>
         <h3>Latest Commit</h3>
         {error && <p>{error}</p>}
@@ -56,7 +58,7 @@ const RepoDetailLatest = ({ name }) => {
         {latestCommit && <p>Commit Message: {latestCommit.commit.message}</p>}
         {latestCommit && <p>Commit Date: {latestCommit.commit.author.date}</p>}
       </main>
-      <aside>
+      <aside className={styles.markdown}>
         <ReactMarkdown>{readme}</ReactMarkdown>
       </aside>
     </section>

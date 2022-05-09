@@ -1,7 +1,8 @@
 import RepoItem from '../RepoItem/RepoItem';
+import styles from './RepoList.module.css';
 const RepoList = ({ repos, repoClick }) => {
   return (
-    <ul>
+    <ul className={styles.repo_list}>
       {repos.map((repoDetails) => (
         <RepoItem key={repoDetails.id} {...repoDetails} repoClick={repoClick} />
       ))}

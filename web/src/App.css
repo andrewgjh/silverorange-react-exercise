@@ -7,6 +7,23 @@
   pointer-events: none;
 }
 
+.main-title{
+  color:#F76E11;
+  text-transform: uppercase;
+}
+
+.showall_languages{
+  background-color: rgb(233, 89, 37);
+  border:none;
+  margin: .5em;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+.showall_languages:hover{
+  background-color: rgb(231, 132, 97);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

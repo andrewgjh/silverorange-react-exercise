@@ -1,0 +1,13 @@
+.latest{
+  background-color: rgb(235, 195, 126);
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 1em;
+  margin-top:1em;
+}
+
+.markdown{
+  width: 80%;
+  margin:0 auto;
+}
