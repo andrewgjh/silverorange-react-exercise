@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import RepoList from './components/RepoList/RepoList';
+import RepoDetailLatest from './components/RepoDetailsLatest/RepoDetailsLatest';
 import LanguageList from './components/LanguageList/LanguageList';
 import './App.css';
 
@@ -10,6 +11,8 @@ export function App() {
   const [filtered, setFiltered] = useState([]);
   const [error, setError] = useState(null);
   const [languages, setLanguages] = useState([]);
+  const [showDetailRepo, setShowDetailRepo] = useState(false);
+  const [detailRepo, setDetailRepo] = useState(null);
 
   const fetchRepos = useCallback(async () => {
     try {
@@ -25,6 +28,7 @@ export function App() {
           repoLanguages.push(data[i].language);
         }
       }
+      //sort in reverse chronological order by creation date
       data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setLanguages(repoLanguages);
       setRepos(data);
@@ -44,12 +48,28 @@ export function App() {
     );
     setFiltered(filteredByLanguage);
   };
+  const repoDetailed = (id) => {
+    console.log(id);
+    setShowDetailRepo(true);
+    const clickedRepo = repos.find((repo) => repo.id === id);
+    setDetailRepo(clickedRepo.name);
+  };
+  const showAll = () => {
+    setShowDetailRepo(false);
+    setFiltered(repos);
+  };
 
   return (
     <div className="App">
-      <LanguageList languages={languages} filterBy={filterBy} />
-      <RepoList repos={filtered} />
-      {error && <p>{error}</p>}
+      <button onClick={showAll}>Show All Repos</button>
+      {showDetailRepo && <RepoDetailLatest name={detailRepo} />}
+      {!showDetailRepo && (
+        <LanguageList languages={languages} filterBy={filterBy} />
+      )}
+      {!showDetailRepo && (
+        <RepoList repos={filtered} repoClick={repoDetailed} />
+      )}
+      {!showDetailRepo && error && <p>{error}</p>}
     </div>
   );
 }

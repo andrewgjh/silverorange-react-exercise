@@ -5,9 +5,14 @@ const RepoItem = ({
   language,
   forks_count: forksCount,
   created_at: createdAt,
+  repoClick,
 }) => {
   return (
-    <li>
+    <li
+      onClick={() => {
+        repoClick(id);
+      }}
+    >
       <h1>{name}</h1>
       <h3>Fork Count: {forksCount}</h3>
       <h3>Language: {language}</h3>
