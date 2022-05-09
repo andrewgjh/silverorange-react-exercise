@@ -15,6 +15,7 @@ export function App() {
         throw new Error('Unable to fetch data!');
       }
       const data = await response.json();
+      data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
       setRepos(data);
     } catch (err) {
