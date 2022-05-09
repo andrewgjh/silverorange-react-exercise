@@ -8,12 +8,12 @@ repos.get('/', async (_, res) => {
 
   res.status(200);
 
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-
   const remoteData = await axios.get(
     'https://api.github.com/users/silverorange/repos'
   );
   const amalgamateData = remoteData.data.concat(localData);
+
+  //filter data for repos with a fork key which has a value of false
   const filteredData = amalgamateData.filter((repo) => repo.fork === false);
   res.json(filteredData);
 });
